@@ -18,9 +18,9 @@ flag 4
 wfuzz -zfile,/usr/share/wfuzz/wordlist/general/common.txt --hs 'Invalid Username' -d 'username=FUZZ&password=grinch' https://66eb8eed35791300628d3d4f7b00bccf.ctf.hacker101.com/secure-login/
 ```
 - that returned the username 'access', and when tested on the portal, I now get the error `invalid password`
-- some more bruteforcing
+- some more bruteforcing 
 ```bash
-wfuzz -zfile,/wordlists/passwords.txt --hs 'Invalid Password' -d 'username=access&password=FUZZ' https://66eb8eed35791300628d3d4f7b00bccf.ctf.hacker101.com/secure-login/
+ffuf -u https://hackyholidays.h1ctf.com/secure-login -X POST -t 50 -fr "Invalid Password" -d "username=access&password=FUZZ" -H "Content-Type: application/x-www-form-urlencoded" -c -w /usr/share/wordlists/seclists/Passwords/Common-Credentials/10-million-password-list-top-100.txt
 ```
 - which returned 'computer'
 - I logged in, and got brought to a screen that said 'no files to download'
@@ -108,3 +108,33 @@ flag 6
 - got the super secret admin header + the flag
 
 flag 7
+- next we tackle the forum
+- the first thing I noticed was that some posts are hidden unless you are an admin
+- vewing regular posts, there is an index in the url, but trying to view /0, /3, /4, /1/0, /1/2, etc didn't work
+- next I noticed the login option; this time, is said 'user/pass combo is invalid', which I intepreted as 'SQL time!'
+- this ended up being a dead end, so I fuzzed for directories instead
+```bash
+ffuf -u https://hackyholidays.h1ctf.com/forum/FUZZ -fc 404 -c -t 50 -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+```
+- I found the path `/phpmyadmin`
+- now we get the REAL login screen
+- looking up phpmyadmin on google, github results immediately began to pop up
+- most of the github repos mentioned using mysql, so I tried to login using SQL bypass techniques
+- that didn't work out, so I kept digging (default creds also didn't work)
+- as a kind of last ditch attempt, I just looked up 'phpmyadmin grinch' on google, which brough up a repo called forum run by Grinch-Networks
+- it says there were only 4 commits to the repo (which I found immediately suspicious but that could js be me)
+- I went striaght to the changelog, (where I immediately realized why my SQL attempts weren't working)
+- manually checking the commits, I found one called small fix
+- this line of code:
+```php
+self::$read = new DbConnect( false, 'forum', 'forum','6HgeAZ0qC9T6CQIqJpD' );
+```
+- was changed to this
+```php
+self::$read = new DbConnect( false, '', '','' );
+```
+- shout out to leaked credentials fr 
+- I logged in with the combo, clicked on forum, users, and found two users with matching hashes
+- grinch had a 1 in the admin column, so I cracked his hash through basic lookup
+- the password ended up being `BahHumbug`
+- logging in to the regular portal, there ended up being a new section of posts called 'Secret Plans', which contained a post with the flag
