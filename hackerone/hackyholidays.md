@@ -8,7 +8,7 @@ flag 1
 - unfortunately dirb turned up nothing so I decided to dig a bit more on the webpage
 - I used inspect to dig through the HTML and quite easily found another flag in the `alertbox` id
 
-flag 2
+flag 4
 - in the same alertbox that contained flag 1, there was a `next-page` attribute that pointed to the filepath `/apps-home`
 - this page contains a few differen buttons, including one for a secure login portal
 - clicking on the secure login page created a popup that prompted you to start a challege to access the secret area
@@ -17,4 +17,19 @@ flag 2
 ```bash
 wfuzz -zfile,/usr/share/wfuzz/wordlist/general/common.txt --hs 'Invalid Username' -d 'username=FUZZ&password=grinch' https://66eb8eed35791300628d3d4f7b00bccf.ctf.hacker101.com/secure-login/
 ```
-- that returned the username 'access'
+- that returned the username 'access', and when tested on the portal, I now get the error `invalid password`
+- some more bruteforcing
+```bash
+wfuzz -zfile,/wordlists/passwords.txt --hs 'Invalid Password' -d 'username=access&password=FUZZ' https://66eb8eed35791300628d3d4f7b00bccf.ctf.hacker101.com/secure-login/
+```
+- which returned 'computer'
+- I logged in, and got brought to a screen that said 'no files to download'
+- immediately going to inspect, I found that there was a new cookie with the name `securelogin`
+- inspecting the cookie values, I noticed that the `secure` token was set to `false`. I couldn't figure out what controlled this token, so I decided to come back to it later.
+- I then noticed that the value of the `securelogin` token, `eyJjb29raWUiOiIxYjVlNWYyYzlkNThhMzBhZjRlMTZhNzFhNDVkMDE3MiIsImFkbWluIjpmYWxzZX0%3D`, looked like it was base64 encoded
+- that returned this: `{"cookie":"1b5e5f2c9d58a30af4e16a71a45d0172","admin":true}7`
+- so I set the admin value to true, re-encoded it and modified the token value. (i also removed the 7 before encoding, idk why it's there)
+- that brought up a `my_secure_files_not_for_you.zip` file, which contains a password protected png file, and a password protected flag file
+- after a bit of research, I discovered fcrackzip and bruteforced the flag.txt password
+`fcrackzip -u -D -p wordlists/passwords.txt my_secure_files_not_for_you.zip`
+- the password was 'hahahaha'
