@@ -92,4 +92,19 @@ if( isset($_GET["template"])  ){
 - remove secretadmin.php
 - `secretadmin.php`
 - replace the filepath - `/my-diary/?template=secretadsecretaadmin.phpdmin.phpmin.php`
-- success!
+- success! (you also get a pending entry about how the grinch is gonna DdoS santa's workshop)
+
+flag 6
+- the next challenge is the grinch's hate mail campaign
+- I navigated to the only avaiable campaign name (called Guess What)
+- the hate mail which grabs a couple templates and the name of the recipient, and you can view the result witht he preiveiw button
+- my first though was to see if we can get it to output file contents that it's not supposed to, because it's pulling those templates
+- I previewed a new campaign passing flag.txt to the template as a test, and I got the message `Cannot find template file /templates/flag.txt`
+- navigating to `/hate-mail-genorator/templates` all the files in the directory were listed out
+- one of the files was `38dhs_admins_only_header.html`
+- trying to navigate to the filepath threw a 403 forbidden, and trying to preview an email with the file resulted in a `You do not have access to the file 38dhs_admins_only_header.html` message
+- inspecting the campaign form further, I found some hidden elements, including the recipients name and email
+- I modified the hidden preiview data block to include the admin only template (adding the template value normally threw a JSON formatting error, so I replaced the name with the template)
+- got the super secret admin header + the flag
+
+flag 7
