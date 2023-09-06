@@ -1,31 +1,32 @@
 ## writeups
 
 ### bandit
-<code>[lvl0](/bandit/lvl0.md)</code><br>
-<code>[lvl1](/bandit/lvl1.md)</code><br>
-<code>[lvl2](/bandit/lvl2.md)</code><br>
-<code>[lvl3](/bandit/lvl3.md)</code><br>
-<code>[lvl4](/bandit/lvl4.md)</code><br>
-<code>[lvl5](/bandit/lvl5.md)</code><br>
-<code>[lvl6](/bandit/lvl6.md)</code><br>
+<code>[lvl0](/bandit/lvl0.md)</code>
+<code>[lvl1](/bandit/lvl1.md)</code>
+<code>[lvl2](/bandit/lvl2.md)</code>
+<code>[lvl3](/bandit/lvl3.md)</code>
+<code>[lvl4](/bandit/lvl4.md)</code>
+<code>[lvl5](/bandit/lvl5.md)</code>
+<code>[lvl6](/bandit/lvl6.md)</code>
 <code>[lvl7](/bandit/lvl7.md)</code><br>
-<code>[lvl8](/bandit/lvl8.md)</code><br>
-<code>[lvl9](/bandit/lvl9.md)</code><br>
-<code>[lvl10](/bandit/lvl10.md)</code><br>
-<code>[lvl11](/bandit/lvl11.md)</code><br>
-<code>[lvl12](/bandit/lvl12.md)</code><br>
-<code>[lvl13](/bandit/lvl13.md)</code><br>
-<code>[lvl14](/bandit/lvl14.md)</code><br>
+<code>[lvl8](/bandit/lvl8.md)</code>
+<code>[lvl9](/bandit/lvl9.md)</code>
+<code>[lvl10](/bandit/lvl10.md)</code>
+<code>[lvl11](/bandit/lvl11.md)</code>
+<code>[lvl12](/bandit/lvl12.md)</code>
+<code>[lvl13](/bandit/lvl13.md)</code>
+<code>[lvl14](/bandit/lvl14.md)</code>
 <code>[lvl15](/bandit/lvl15.md)</code><br>
-<code>[lvl16](/bandit/lvl16.md)</code><br>
-<code>[lvl17](/bandit/lvl17.md)</code><br>
-<code>[lvl18](/bandit/lvl18.md)</code><br>
-<code>[lvl19](/bandit/lvl19.md)</code><br>
-<code>[lvl20](/bandit/lvl20.md)</code><br>
-<code>[lvl21](/bandit/lvl21.md)</code><br>
-<code>[lvl22](/bandit/lvl22.md)</code><br>
+<code>[lvl16](/bandit/lvl16.md)</code>
+<code>[lvl17](/bandit/lvl17.md)</code>
+<code>[lvl18](/bandit/lvl18.md)</code>
+<code>[lvl19](/bandit/lvl19.md)</code>
+<code>[lvl20](/bandit/lvl20.md)</code>
+<code>[lvl21](/bandit/lvl21.md)</code>
+<code>[lvl22](/bandit/lvl22.md)</code>
 ___
 ### hackerone
-<code>[grayhatcon](/hackerone/grayhatcon.md)</code><br>
+<code>[grayhatcon](/hackerone/grayhatcon.md)</code>
+<code>[hackyholidays](/hackerone/hackyholidays.md)</code>
 ___
 ### picoctf
