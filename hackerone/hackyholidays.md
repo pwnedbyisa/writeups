@@ -203,3 +203,4 @@ if( !isset($page) ) die("You cannot access this page directly"); ?>
 
 flag 10 + 11
 - wip
+- these both take place on the `/r3c0n_server_4fdk59/`
