@@ -138,3 +138,64 @@ self::$read = new DbConnect( false, '', '','' );
 - grinch had a 1 in the admin column, so I cracked his hash through basic lookup
 - the password ended up being `BahHumbug`
 - logging in to the regular portal, there ended up being a new section of posts called 'Secret Plans', which contained a post with the flag
+
+flag 8
+- quiz time! I entered grinch as my name, left the default answers and submitted
+- at the end of the quiz, I got a message saying there was one other player with the same name, which means the quiz stores player names, which means theres a database, which FINALLY means SQLi
+- fun fact idk enough about SQL to exflitrate w this one... so we'll come back later
+
+flag 9
+- I was so traumatized by all the login portals atp that I just decided to inspect the source code and page elments first
+- the top of the webpage source code had this message `<!-- See README.md for assistance -->` so I navigated to the `/README.md` filepath, which downloaded the file
+```
+# SignUp Manager
+
+SignUp manager is a simple and easy to use script which allows new users to signup and login to a private page. All users are stored in a file so need for a complicated database setup.
+
+### How to Install
+
+1) Create a directory that you wish SignUp Manager to be installed into
+
+2) Move signupmanager.zip into the new directory and unzip it.
+
+3) For security move users.txt into a directory that cannot be read from website visitors
+
+4) Update index.php with the location of your users.txt file
+
+5) Edit the user and admin php files to display your hidden content
+
+6) You can make anyone an admin by changing the last character in the users.txt file to a Y
+
+7) Default login is admin / password
+```
+- first I tested the default creds (didn't work)
+- then I tried navigating to `/users.txt`, `/signupmanager.zip`, and `/index.php`
+- first threw a 404, zip file downloaded, and index was just the homepage
+- the zip file contained `user.php`, `admin.php`, `signup.php`, `index.php`, and a README file
+- user.php contains this (admin.php is basically identical):
+```php
+<?php
+//DO NOT DELETE THE BELOW LINE
+if( !isset($page) ) die("You cannot access this page directly"); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SignUp Manager - User Area</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container" style="margin-top:20px">
+    <h1 class="text-center" style="margin:0;padding:0">User Area</h1>
+</div>
+</body>
+</html>
+```
+- so naviagating to the filepath works about as well as expected
+- based on step 6 in the README, you can also elevate any user to admin privileges by modifying their users.txt file to have a Y as the last character
+- in the `index.php` file (which I will not be pasting cus it's long), I noticed that the only parameter limited by length is age, which means theoretically we can add enough Y's (or somehow make othe rparameters long enough) to overwrite into admin permissions
+- the final field in the user.txt file is the user's lastname, which means the last letter must be Y.
+- after a couple tests, I quickly realized that it would be a lot more efficient to make the age as big as possible with as few characters as possible, rather than mak out on characters with the names
+- I used E notation to fit the 3 character requirement (ex// 2e3 is 2 * 10^3), changes the form with inspect, and made my lastname all Y's
