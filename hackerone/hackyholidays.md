@@ -97,14 +97,14 @@ if( isset($_GET["template"])  ){
 flag 6
 - the next challenge is the grinch's hate mail campaign
 - I navigated to the only avaiable campaign name (called Guess What)
-- the hate mail which grabs a couple templates and the name of the recipient, and you can view the result witht he preiveiw button
+- the hate mail grabs a couple templates and the name of the recipient, and you can view the result with the preview button
 - my first though was to see if we can get it to output file contents that it's not supposed to, because it's pulling those templates
 - I previewed a new campaign passing flag.txt to the template as a test, and I got the message `Cannot find template file /templates/flag.txt`
 - navigating to `/hate-mail-genorator/templates` all the files in the directory were listed out
 - one of the files was `38dhs_admins_only_header.html`
 - trying to navigate to the filepath threw a 403 forbidden, and trying to preview an email with the file resulted in a `You do not have access to the file 38dhs_admins_only_header.html` message
 - inspecting the campaign form further, I found some hidden elements, including the recipients name and email
-- I modified the hidden preiview data block to include the admin only template (adding the template value normally threw a JSON formatting error, so I replaced the name with the template)
+- I modified the hidden preiview data block to include the admin only template (adding the template value normally threw a JSON formatting error, so I replaced the name value with the template)
 - got the super secret admin header + the flag
 
 flag 7
@@ -142,7 +142,7 @@ self::$read = new DbConnect( false, '', '','' );
 flag 8
 - quiz time! I entered grinch as my name, left the default answers and submitted
 - at the end of the quiz, I got a message saying there was one other player with the same name, which means the quiz stores player names, which means theres a database, which FINALLY means SQLi
-- fun fact idk enough about SQL to exflitrate w this one... so we'll come back later
+- fun fact idk enough about SQL to exfiltrate w this one... so we'll come back later
 
 flag 9
 - I was so traumatized by all the login portals atp that I just decided to inspect the source code and page elments first
@@ -195,9 +195,9 @@ if( !isset($page) ) die("You cannot access this page directly"); ?>
 ```
 - so naviagating to the filepath works about as well as expected
 - based on step 6 in the README, you can also elevate any user to admin privileges by modifying their users.txt file to have a Y as the last character
-- in the `index.php` file (which I will not be pasting cus it's long), I noticed that the only parameter limited by length is age, which means theoretically we can add enough Y's (or somehow make othe rparameters long enough) to overwrite into admin permissions
+- in the `index.php` file (which I will not be pasting cus it's long), I noticed that the only parameter limited by length is age, which means theoretically we can add enough Y's (or somehow make other parameters long enough) to overwrite into admin permissions
 - the final field in the user.txt file is the user's lastname, which means the last letter must be Y.
-- after a couple tests, I quickly realized that it would be a lot more efficient to make the age as big as possible with as few characters as possible, rather than mak out on characters with the names
+- after a couple tests, I quickly realized that it would be a lot more efficient to make the age as big as possible with as few characters as possible, rather than max out on characters with the names
 - I used E notation to fit the 3 character requirement (ex// 2e3 is 2 * 10^3), changed the form with inspect, and made my lastname all Y's
 - success!
 
