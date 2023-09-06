@@ -198,4 +198,8 @@ if( !isset($page) ) die("You cannot access this page directly"); ?>
 - in the `index.php` file (which I will not be pasting cus it's long), I noticed that the only parameter limited by length is age, which means theoretically we can add enough Y's (or somehow make othe rparameters long enough) to overwrite into admin permissions
 - the final field in the user.txt file is the user's lastname, which means the last letter must be Y.
 - after a couple tests, I quickly realized that it would be a lot more efficient to make the age as big as possible with as few characters as possible, rather than mak out on characters with the names
-- I used E notation to fit the 3 character requirement (ex// 2e3 is 2 * 10^3), changes the form with inspect, and made my lastname all Y's
+- I used E notation to fit the 3 character requirement (ex// 2e3 is 2 * 10^3), changed the form with inspect, and made my lastname all Y's
+- success!
+
+flag 10 + 11
+- wip
