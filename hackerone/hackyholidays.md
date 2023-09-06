@@ -1,5 +1,5 @@
 flag 0
-- tbh I had no idea where to start, so I did my first checklist item for most web CTFs; add robots.txt to the end of the url to check for web crawlers
+- tbh I had no idea where to start, so I did my first checklist item for most web CTFs; add robots.txt to the end of the url to check for web crawlers (for reference, .htaccess and another one imma add when i remember what it's called are also good starting points)
 - the page showed `User-agent: *` and  `disallow /s3cr3t-ar3a`, along with the flag
 
 flag 1
