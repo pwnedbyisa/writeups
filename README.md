@@ -1,5 +1,5 @@
 ## writeups
-
+> step by steps for some of the CTFs I've done (fair warning, a lot of these are incomplete/ WIPs)
 ### bandit
 <code>[lvl0](/bandit/lvl0.md)</code>
 <code>[lvl1](/bandit/lvl1.md)</code>
