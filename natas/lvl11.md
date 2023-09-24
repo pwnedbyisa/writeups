@@ -46,9 +46,9 @@ function xor_encrypt($in) {
 - enc (xor) key = pt
 - pt (xor) enc = key
 - in this case, the encrypted text is the cookie (which we have) and the plaintext is the array (which we input)
-- first, we base64 decode the cookie to get it to it's xor encrypted format and input that as plaintext
+- first, we create a script base64 decode the cookie to get it to it's xor encrypted format and input that as plaintext
 - next, we set the key as the json encoded default array
-```
+```php
 <?php
 
 $cookie=base64_decode('MGw7JCQ5OC04PT8jOSpqdmkgJ25nbCorKCEkIzlscm5of3l9en95bjY%3D');
@@ -72,7 +72,7 @@ echo xor_encrypt($cookie);
 - ran the script with `php test.php` and get the key `KNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKKL`
 - if a key is shorter than the plaintext it just repeats, so we know the key is `KNHL`
 - now that we have the key, we can modify the code to combine it with the array when the showpassword value is set to 'yes'
-```
+```php
 <?php
 
 $data= array( "showpassword"=>"yes", "bgcolor"=>"#ffffff");
