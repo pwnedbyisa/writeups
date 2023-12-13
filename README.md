@@ -47,4 +47,4 @@ ___
 <code>[lvl13](/natas/lvl13.md)</code>
 ___
 ### misc
-<code>[THM - Wonderland](/misc/womderland.md)</code>
+<code>[THM - Wonderland](/misc/wonderland.md)</code>
