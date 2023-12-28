@@ -91,3 +91,6 @@ mimikatz(commandline) # crypto::certificates /systemstore:LOCAL_MACHINE /store:"
 - (there's more but you get the point)
 - From this we can determine that the tool they are running is `mimikatz`
 #### Question 4
+- The important part of the info we found for question 3 is that the attacker used a ps command to read a `.pfx` file adn covert is to base64
+- pfx files usually contain a public key, private key, and certificate chain, and they are suually used to store things like TLS certs
+- 
