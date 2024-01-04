@@ -91,6 +91,18 @@ mimikatz(commandline) # crypto::certificates /systemstore:LOCAL_MACHINE /store:"
 - (there's more but you get the point)
 - From this we can determine that the tool they are running is `mimikatz`
 #### Question 4
-- The important part of the info we found for question 3 is that the attacker used a ps command to read a `.pfx` file adn covert is to base64
+- The important part of the info we found for question 3 is that the attacker used a ps command to read a `.pfx` file and covert it to base64
 - pfx files usually contain a public key, private key, and certificate chain, and they are suually used to store things like TLS certs
-- 
+- we can use the pfx key to decrypt tls in wireshark
+- `edit > preferences > tls > rsa keys list`
+- input <IP> port - 3389 prc key file - /path/to/b64_decoded_pfx_file pass - mimikatz
+- from here we find that the client is using RDP
+- I exported specific RDP info for analysis with `file > export PDUs to file > OSI layer 7` and saved it to another .pcap file
+- from here I used `pyrdp` to extract the interactions
+```shell
+pyrdp-convert -f <new file> /path/to/exported/pcap
+pyrdp-player <new file>.pyrdp
+```
+- after scrolling through the activity, I found the assigned case number in an email screencapture `31337-0`
+#### Question 5
+- The yeti key was also in the rdp replay in a clipboard data variable `1–f9548f131522e85ea30e801dfd9b1a4e526003f9e83301faad85e6154ef2834`
