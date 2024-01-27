@@ -1,5 +1,5 @@
 flag 0
-- tbh I had no idea where to start, so I did my first checklist item for most web CTFs; add robots.txt to the end of the url to check for web crawlers (for reference, .htaccess and another one imma add when i remember what it's called are also good starting points)
+- tbh I had no idea where to start, so I did my first checklist item for most web CTFs; add robots.txt to the end of the url to check for web crawlers (for reference, `.htaccess` is another good starting point (though a lot of the time access is forbidden)
 - the page showed `User-agent: *` and  `disallow /s3cr3t-ar3a`, along with the flag
 
 flag 1
@@ -30,7 +30,7 @@ ffuf -u https://hackyholidays.h1ctf.com/secure-login -X POST -t 50 -fr "Invalid 
 - that returned this: `{"cookie":"1b5e5f2c9d58a30af4e16a71a45d0172","admin":true}7`
 - so I set the admin value to true, re-encoded it and modified the token value. (i also removed the 7 before encoding, idk why it's there)
 - that brought up a `my_secure_files_not_for_you.zip` file, which contains a password protected png file, and a password protected flag file
-- after a bit of research, I discovered fcrackzip and bruteforced the flag.txt password
+- after a bit of research, I discovered `fcrackzip` and bruteforced the flag.txt password
 `fcrackzip -u -D -p wordlists/passwords.txt my_secure_files_not_for_you.zip`
 - the password was 'hahahaha'
 
