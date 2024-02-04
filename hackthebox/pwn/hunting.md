@@ -1,3 +1,4 @@
+WIP
 > I've hidden the flag very carefully, you'll never manage to find it! Please note that the goal is to find the flag, and not to obtain a shell. <br>
 #### Steps
 1. unzip the file with tha password `hackthebox` (given)
