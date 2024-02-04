@@ -122,5 +122,11 @@ SF:x20\x20\x1b\[48;5;240m\x20\x20\x1b\[48;5;95m\x20\x1b\[38;5;16m4\x1b\[0m
 SF:\n\x1b\[48;");
 ```
 11. This is the game, but there appears to be other information besides colorcodes and instructions
-```shell
-telnet 83.136.249.57 chargen
+12. I decided to hold on that and go back to the only other given information: the description and the title
+13. Starting with the title, I found out that the FEN chess algorithm is a way to describe the way the board looks at any given point in game
+14. The movement is long algebraic form (ex// e2e4), but we can't ignore the title
+15. There was also this fix
+> Fixed a logic bug in board generation, made answers consistent for different Stockfish versions and reduced challenge length.<br>
+16. Which was essentially a hint that you need to use an outside chess engine (Stockfish) to solve the challenge
+17. This lines up with the description; 20 levels deep means depth 20 on Stockfish
+18. Garry chess = Garry Kasparov (literal inventor of chess)
