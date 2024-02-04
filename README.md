@@ -28,7 +28,9 @@
 ___
 ### Hackerone
 [grayhatcon](/hackerone/grayhatcon.md)   -
-[hackyholidays](/hackerone/hackyholidays.md)   
+[hackyholidays](/hackerone/hackyholidays.md)   -
+[photogallery](/hackerone/photo_gallery.md)    -
+[Y2FuIHlvdSByZWNvbj8](hackerone/Y2FuIHlvdSByZWNvbj8.md)
 
 ___
 ### Natas - OverTheWire
