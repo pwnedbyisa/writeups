@@ -101,5 +101,5 @@ Processing the 997th archive.
 Processing the 998th archive.
 Processing the 999th archive.
 Processing the 1000th archive.
-['HTB{D0_y0u_L1k3_m0r53??}\n']
+['HTB{D0_y0u_L1k3_XXXXX??}\n']
 ```
