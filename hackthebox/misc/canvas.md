@@ -165,4 +165,4 @@ var res = String["fromCharCode"](72, 84, 66, 123, 87, 51, 76, 99, 48, 109, 51, 9
 ```
 10. The `res` variable (bottom of the file) looks like its ascii (or base85) encoded
 11. I just used dcode again for ascii decoding and got the flag!
-`HTB{W3Lc0m3_70_J4V45CR1p7_d30bFu5C4710N}`
+`HTB{W3Lc0m3_70_J4V45CR1p7_XXXXXXXXXXXXXX}`
