@@ -52,3 +52,6 @@ ___
 ### TryHackMe
 [Wonderland](/thm/wonderland.md)   -
 [Return of the Yeti](/thm/returnoftheyeti.md)   
+___
+### HackTheBox
+- add these later (I don't really do writeups for machines but I do have some for challenges)
