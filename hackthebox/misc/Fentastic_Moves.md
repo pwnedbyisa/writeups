@@ -125,8 +125,10 @@ SF:\n\x1b\[48;");
 12. I decided to hold on that and go back to the only other given information: the description and the title
 13. Starting with the title, I found out that the FEN chess algorithm is a way to describe the way the board looks at any given point in game
 14. The movement is long algebraic form (ex// e2e4), but we can't ignore the title
-15. There was also this fix
+17. There was also this fix
 > Fixed a logic bug in board generation, made answers consistent for different Stockfish versions and reduced challenge length.<br>
 16. Which was essentially a hint that you need to use an outside chess engine (Stockfish) to solve the challenge
 17. This lines up with the description; 20 levels deep means depth 20 on Stockfish
 18. Garry chess = Garry Kasparov (literal inventor of chess)
+19. Called in reinforcements atp because the skid blood runs strong but basically the script connected to the server, grabbed the netcat data, parsed it to be readable to stockfish, ran stockfish, parsed the output, found the correct move, and input the correct move to the netcat instance (all in python)
+20. 4 hours deep and no luck (to be continued maybe)
