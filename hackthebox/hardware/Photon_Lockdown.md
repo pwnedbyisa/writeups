@@ -19,3 +19,4 @@ rootfs: Squashfs filesystem, little endian, version 4.0, zlib compressed, 109361
 7. I then realized I was completely wasting my time because I already know the flag format, `HTB{}`
 8. So I ran `grep -r HTB` and got the flag<br>
 `HTB{N0w_Y0u_C4n_XXXXX}`
+**Note**: you can use `sudo umount <dir>` to unmount the file system from the directory you placed it in and then delete the directory. Since the filesystem is read only, you can't delete it with rm
