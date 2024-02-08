@@ -1,6 +1,36 @@
 ## writeups
 > Step by steps for some of the CTFs I've done <br>
 > I've only added a couple THM rooms that were pretty hard/ really interesting to me, but there are a ton more I can add if requested!
+
+___
+### Hackerone
+[grayhatcon](/hackerone/grayhatcon.md)   -
+[hackyholidays](/hackerone/hackyholidays.md)   -
+[photogallery](/hackerone/photo_gallery.md)    -
+[Y2FuIHlvdSByZWNvbj8](hackerone/Y2FuIHlvdSByZWNvbj8.md)
+___
+### TryHackMe
+[Wonderland](/thm/wonderland.md)   -
+[Return of the Yeti](/thm/returnoftheyeti.md)   
+___
+### HackTheBox
+#### crypto
+- [Baby Encryption](/hackthebox/crypto/BabyEncryption.md)
+#### hardware
+- [Debugging Interface](/hackthebox/hardware/Debugging_Interface.md)
+- [Photon Lockdown](/hackthebox/hardware/Photon_Lockdown.md)
+- [The Needle](/hackthebox/hardware/The_Needle.md)
+- [Factory](/hackthebox/hardware/Factory.md)
+- [RFlag](/hackthebox/hardware/RFlag.md)
+- [Mission Pinpossible](/hackthebox/hardware/Mission_Pinpossible.md)
+#### misc
+- [Fentastic Moves](/hackthebox/misc/Fentastic_Moves.md)
+- [M0rsarchive](/hackthebox/misc/M0rsarchive.md)
+- [canvas](hackthebox/misc/canvas.md)
+#### pwn
+- [hunting](/hackthebox/pwn/hunting.md)
+- [racecar](hackthebox/pwn/racecar.md)
+___
 ### Bandit - OverTheWire
 [lvl0](/bandit/lvl0.md)   -
 [lvl1](/bandit/lvl1.md)   -
@@ -26,13 +56,6 @@
 [lvl21](/bandit/lvl21.md)   -
 [lvl22](/bandit/lvl22.md)   -
 ___
-### Hackerone
-[grayhatcon](/hackerone/grayhatcon.md)   -
-[hackyholidays](/hackerone/hackyholidays.md)   -
-[photogallery](/hackerone/photo_gallery.md)    -
-[Y2FuIHlvdSByZWNvbj8](hackerone/Y2FuIHlvdSByZWNvbj8.md)
-
-___
 ### Natas - OverTheWire
 [lvl0](/natas/lvl0.md)   -
 [lvl1](/natas/lvl1.md)   -
@@ -49,22 +72,3 @@ ___
 [lvl12](/natas/lvl12.md)   -
 [lvl13](/natas/lvl13.md)   
 ___
-### TryHackMe
-[Wonderland](/thm/wonderland.md)   -
-[Return of the Yeti](/thm/returnoftheyeti.md)   
-___
-### HackTheBox
-#### crypto
-- [Baby Encryption](/hackthebox/crypto/BabyEncryption.md)
-#### hardware
-- [Debugging Interface](/hackthebox/hardware/Debugging_Interface.md)
-- [Photon Lockdown](/hackthebox/hardware/Photon_Lockdown.md)
-- [The Needle](/hackthebox/hardware/The_Needle.md)
-#### misc
-- [Fentastic Moves](/hackthebox/misc/Fentastic_Moves.md)
-- [M0rsarchive](/hackthebox/misc/M0rsarchive.md)
-- [canvas](hackthebox/misc/canvas.md)
-#### pwn
-- [hunting](/hackthebox/pwn/hunting.md)
-- [racecar](hackthebox/pwn/racecar.md)
-
