@@ -32,10 +32,10 @@ YYLAYYL@YYLAeDLALAYYLAL@YYYF2�0
 ```
 9. I focused on the `<SALEAE>` a the beginning of the file
 10. That brought me to this website: https://www.saleae.com/ which deals with hardware debugging so it checks out
-11. They also advertise a tool to analyze captured adaa from devices (which I downloaded)
-12. I used `chmod +x` to make it executable, and run it
+11. They also advertise a tool to analyze captured data from devices (which I downloaded)
+12. I used `chmod +x` to make it executable, and ran it
 13. I opened a new capture with the `debugging_interface_signal.sal` file, and double clicked the capture box until i could see the individual waves
-14. Hovering over the wave blocks show the bit rate, with is 32.0 beginning at the start block
+14. Hovering over the wave blocks show the bit rate, which is 32.0 beginning at the start block
 15. Go to analyzers and click async serial, then chose `32000` for the bit rate (an estimate) and channel 00 if prompted
 16. Scroll down to data, click terminal, and the flag is at the bottom <br>
 `HTB{d38u991n9_1n732f4c35_c4n_83_f0und_1n_41m057_3v32y_3m83dd3d_XXXXXXXXXX}`
