@@ -16,9 +16,9 @@ Water Storage Facility Interface
 Select: 1
 {"auto_mode": 1, "manual_mode": 0, "stop_out": 0, "stop_in": 0, "low_sensor": 0, "high_sesnor": 0, "in_valve": 1, "out_valve": 0, "flag": "HTB{}"}
 ```
-7. Remembner that our task is to open the `in_valve` and close the `out_valve`. At this point I went back to review the ladder logic
+7. Remember that our task is to open the `in_valve` and close the `out_valve`. At this point I went back to review the ladder logic
 ![image](https://github.com/pwnedbyisa/writeups/assets/138353745/bb16fdda-994e-4910-8a00-e25aeeeb0c6e)
-9. For this first segment, when start is enabled it travels through `manual_mode_control` to `auto_mode`, which jummps down a rung to enable `manual_mode`
+9. For this first segment, when start is enabled it travels through `manual_mode_control` to `auto_mode`, which jumps down a rung to enable `manual_mode`
 ![image](https://github.com/pwnedbyisa/writeups/assets/138353745/4a6913cc-44b7-4fdd-817e-6462c68cd3ac)
 10. Next we run `force_start_out` to follow the path needed to run `out_valve`, remember that we closed `manual_mode` earlier
 11. (force_start_out is enabled by running the second to last rung of the below section)
