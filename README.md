@@ -4,9 +4,14 @@
 
 ___
 ### HackTheBox
-#### crypto
+<details>
+  <summary>crypto</summary>
+  
 - [Baby Encryption](/hackthebox/crypto/BabyEncryption.md)
-#### hardware
+</details>
+<details>
+  <summary>hardware</summary>
+
 - [Debugging Interface](/hackthebox/hardware/Debugging_Interface.md)
 - [Photon Lockdown](/hackthebox/hardware/Photon_Lockdown.md)
 - [The Needle](/hackthebox/hardware/The_Needle.md)
@@ -15,13 +20,21 @@ ___
 - [Mission Pinpossible](/hackthebox/hardware/Mission_Pinpossible.md)
 - [Signals](hackthebox/hardware/Signals.md)
 - [Wander](hackthebox/hardware/Wander.md)
-#### misc
+</details>
+<details>
+  <summary>misc</summary>
+
 - [Fentastic Moves](/hackthebox/misc/Fentastic_Moves.md)
 - [M0rsarchive](/hackthebox/misc/M0rsarchive.md)
 - [canvas](hackthebox/misc/canvas.md)
-#### pwn
+</details>
+<details>
+  <summaary>pwn</summaary>
+
 - [hunting](/hackthebox/pwn/hunting.md)
 - [racecar](hackthebox/pwn/racecar.md)
+</details>
+
 ___
 ### Hackerone
 [grayhatcon](/hackerone/grayhatcon.md)   -
@@ -56,7 +69,7 @@ ___
 [lvl19](/bandit/lvl19.md)   -
 [lvl20](/bandit/lvl20.md)   -
 [lvl21](/bandit/lvl21.md)   -
-[lvl22](/bandit/lvl22.md)   -
+[lvl22](/bandit/lvl22.md)   
 ___
 ### Natas - OverTheWire
 [lvl0](/natas/lvl0.md)   -
