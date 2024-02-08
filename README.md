@@ -54,4 +54,17 @@ ___
 [Return of the Yeti](/thm/returnoftheyeti.md)   
 ___
 ### HackTheBox
-- add these later (I don't really do writeups for machines but I do have some for challenges)
+#### crypto
+- [Baby Encryption](/hackthebox/crypto/BabyEncryption.md)
+#### hardware
+- [Debugging Interface](/hackthebox/hardware/Debugging_Interface.md)
+- [Photon Lockdown](/hackthebox/hardware/Photon_Lockdown.md)
+- [The Needle](/hackthebox/hardware/The_Needle.md)
+#### misc
+- [Fentastic Moves](/hackthebox/misc/Fentastic_Moves.md)
+- [M0rsarchive](/hackthebox/misc/M0rsarchive.md)
+- [canvas](hackthebox/misc/canvas.md)
+#### pwn
+- [hunting](/hackthebox/pwn/hunting.md)
+- [racecar](hackthebox/pwn/racecar.md)
+
