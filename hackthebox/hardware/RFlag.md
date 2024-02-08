@@ -1,4 +1,3 @@
-WIP
 > We have found the garage where some cyber criminals have all their stuff. Using an SDR device, we captured the signal from the remote key that opens the garage. Can you help us to analyze it?
 #### Steps
 1. Unzip the file w password `hackthebox` (given) and CD into the `hardware_rflag` directory
