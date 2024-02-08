@@ -29,7 +29,7 @@ ___
 - [canvas](hackthebox/misc/canvas.md)
 </details>
 <details>
-  <summaary>pwn</summaary>
+  <summary>pwn</summary>
 
 - [hunting](/hackthebox/pwn/hunting.md)
 - [racecar](hackthebox/pwn/racecar.md)
