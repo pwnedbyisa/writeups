@@ -39,7 +39,7 @@ ___
 [lvl4](/bandit/lvl4.md)   -
 [lvl5](/bandit/lvl5.md)   -
 [lvl6](/bandit/lvl6.md)   -
-[lvl7](/bandit/lvl7.md)   -<br>
+[lvl7](/bandit/lvl7.md)   -
 [lvl8](/bandit/lvl8.md)   -
 [lvl9](/bandit/lvl9.md)   -
 [lvl10](/bandit/lvl10.md)   -
@@ -47,7 +47,7 @@ ___
 [lvl12](/bandit/lvl12.md)   -
 [lvl13](/bandit/lvl13.md)   -
 [lvl14](/bandit/lvl14.md)   -
-[lvl15](/bandit/lvl15.md)   -<br>
+[lvl15](/bandit/lvl15.md)   -
 [lvl16](/bandit/lvl16.md)   -
 [lvl17](/bandit/lvl17.md)   -
 [lvl18](/bandit/lvl18.md)   -
