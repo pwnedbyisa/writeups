@@ -20,6 +20,7 @@ ___
 - [Mission Pinpossible](/hackthebox/hardware/Mission_Pinpossible.md)
 - [Signals](hackthebox/hardware/Signals.md)
 - [Wander](hackthebox/hardware/Wander.md)
+- [Prison Escape](hackthebox/hardware/Prison_Escape.md)
 </details>
 <details>
   <summary>misc</summary>
