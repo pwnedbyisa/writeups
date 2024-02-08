@@ -1,4 +1,3 @@
-WIP
 > Our infrastructure is under attack! The HMI interface went offline and we lost control of some critical PLCs in our ICS system. Moments after the attack started we managed to identify the target but did not have time to respond. The water storage facility's high/low sensors are corrupted thus setting the PLC into a halt state. We need to regain control and empty the water tank before it overflows. Our field operative has set a remote connection directly with the serial network of the system.
 #### Steps
 1. Unzip the file w password `hackthebox` (given) to get the `PLC_Ladder_Logic.pdf` and `interface_setup.png` files
@@ -24,8 +23,25 @@ Select: 1
 10. Next we run `force_start_out` to follow the path needed to run `out_valve`, remember that we closed `manual_mode` earlier
 11. (force_start_out is enabled by running the second to last rung of the below section)
 ![image](https://github.com/pwnedbyisa/writeups/assets/138353745/932421ce-f0b8-46b3-8339-75d78e0501f2)
-12. We run the bottom rung of this section to close `force_start_in` and enable the `in_valve`
+12. We run the bottom rung of this section to close `force_start_in` and disable the `in_valve`
 13. Next we create the payload to submit the modbus command
-14. Structure: Hex PLC address (2 chars), Hex function code (2 chars), Hex register address (4 chars), Hex sent data (4 chars)
+14. Structure: Hex PLC address (2 chars), Hex function code (2 chars), Hex coil address (4 chars), Hex sent data (4 chars)
 15. The address is given as `82` in decimal form (as seen in the png file), so this becomes `52` in hex
-16. 
+16. The function code is `05` for force single coil
+17. The coil address is the only one that changes (as shown below) and that is also given in decmial form in the png
+18. The last four characters are always `FF00` in this case because that means ON. `0000` means OFF
+19. These are the commands
+```shell
+# activate manual mode
+520526DBFF00
+
+# activate out valve
+52050034FF00
+
+# disable in valve
+5205001AFF00
+```
+20. I reconnected to the instance and ran all of these commands, checking in between to ensure the changes were sent as expected
+```
+{"auto_mode": 0, "manual_mode": 1, "stop_out": 0, "stop_in": 1, "low_sensor": 0, "high_sesnor": 0, "in_valve": 0, "out_valve": 1, "flag": "HTB{14dd32_1091c_15_7h3_1091c_c12cu175_f02_XXXXXXXXXXXXXXXXXX}"}
+```
