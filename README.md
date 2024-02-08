@@ -14,6 +14,7 @@ ___
 - [RFlag](/hackthebox/hardware/RFlag.md)
 - [Mission Pinpossible](/hackthebox/hardware/Mission_Pinpossible.md)
 - [Signals](hackthebox/hardware/Signals.md)
+- [Wander](hackthebox/hardware/Wander.md)
 #### misc
 - [Fentastic Moves](/hackthebox/misc/Fentastic_Moves.md)
 - [M0rsarchive](/hackthebox/misc/M0rsarchive.md)
