@@ -39,4 +39,11 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 ...
 [ETC]
 ```
+4. When researching how to open `.logicdata` files, I found [this tool](https://support.saleae.com/faq/technical-faq/open-logicdata-files) by Salae
+```
+chmod +x Logic-1.2.40-Linux.AppImage
+./Logic-1.2.40-Linux.AppImage --appimage-extract
+./Logic-1.2.40-Linux.AppImage
+```
+
 
