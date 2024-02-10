@@ -24,7 +24,7 @@ frame.len==17
 13. The Lite-On company makes many devices, one being bluetooth keyboards. Considering the circumstances, a keyboard makes the most sense
 14. Based on the `A` present in the packet data, and some [documentation](https://cdn.sparkfun.com/datasheets/Wireless/Bluetooth/RN-HID-User-Guide-v1.0r.pdf) (page 11), we can determine how data is sent
 ![Screenshot 2024-02-10 110545](https://github.com/pwnedbyisa/writeups/assets/138353745/af8dda71-6e54-4b9d-aff7-57121cd03a27)
-15. `00` precedes lowercase letters whiel `02` precedes uppercase letters. `02 00 04` gives us `A`
+15. `00` precedes lowercase letters while `02` precedes uppercase letters (equal to hitting shift). `02 00 04` gives us `A`
 16. To find the HTB string, we use the same strategy
 ```
 frame[10] == 0x02 and frame[12] == 0x2F   --   {
@@ -34,3 +34,4 @@ frame[10] == 0x02 and frame[12] == 0x05   --   B
 frame[10] == 0x02 and frame[12] == 0x30   --   }
 ```
 17. Extracting a flag of unknown length could take a very long time manually, so we write a script, passing through the key/value pairs for the bluetooth encoding.
+18. I tried to stay true to my script kiddie roots and find an already written script to use, but unfortunately that wasn't possible so I had to write my own </3
