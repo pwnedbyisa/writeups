@@ -28,6 +28,7 @@ ___
 - [Fentastic Moves](/hackthebox/misc/Fentastic_Moves.md)
 - [M0rsarchive](/hackthebox/misc/M0rsarchive.md)
 - [canvas](hackthebox/misc/canvas.md)
+- [Man In The Middle](hackthebox/misc/Man_In_The_Middle.md)
 </details>
 <details>
   <summary>pwn</summary>
