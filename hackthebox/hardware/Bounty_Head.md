@@ -49,5 +49,6 @@ d-linux-x86-64.s2
 ![Screenshot 2024-02-11 143820](https://github.com/pwnedbyisa/writeups/assets/138353745/1a4b1338-813e-4cfe-bcf1-c98d8b0c3357)
 ![image](https://github.com/pwnedbyisa/writeups/assets/138353745/45eac033-bb29-4ad7-9ed3-156e3d674304)
 ![image](https://github.com/pwnedbyisa/writeups/assets/138353745/5a708717-9ed0-4e3d-8b11-425438232eed)
+12. We'll come back to this one. Looking at the `efs.bin` file, we know efs means either elastic file system (made by amazon) or encrypted file system
 
 
