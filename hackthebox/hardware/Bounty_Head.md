@@ -1,6 +1,7 @@
+WIP
 > While having a home-brewed Mezcal in your favourite tavern, one of the most wanted cyborgs in the galaxy entered the room, he wanted to exact revenge on you for putting him away back in your bounty hunting days. A intense melee involving hand-to-hand combat ensued. Once you pinned him down, you tried to backdoor his system and neutralise him but he managed to escape. You successfully extracted the firmware from his system and pulled off the inversion cable for his torsional magnesium drive capacitor, so he mustn't have gone far. Your mission is to identify the suspect's current location and apprehend him.
 #### Steps
-1. Unzip the file w assword `hackthebox` to get the `boot_lodaer` and `efs.bin` files
+1. Unzip the file w password `hackthebox` to get the `boot_lodaer` and `efs.bin` files
 2. Basic enumeration with file and binwalk didn't reveal much, except that `boot_loader` follows the intel HEX format
 ```
 └─$ file boot_loader 
@@ -39,4 +40,14 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 8. Intel HEX lines follow the format `:LLAAAATT<data>SS` (this [page](https://en.wikipedia.org/wiki/Intel_HEX) also has helpful info)
 9. `LL` is numebr of data bytes, `AAAA` is the address, `TT` is the hex code (00 is data, 01 is EOF, etc), and `SS` is the checksum
 10. While copying the file over I noticed that there were long periods where the data bytes did not change, and then they would change for a while and switch back and forth
-11. 
+11. Next I ran it though cyberchef, and a few initial strings stood out
+```
+ELF
+lib64/lâ
+d-linux-x86-64.s2
+```
+![Screenshot 2024-02-11 143820](https://github.com/pwnedbyisa/writeups/assets/138353745/1a4b1338-813e-4cfe-bcf1-c98d8b0c3357)
+![image](https://github.com/pwnedbyisa/writeups/assets/138353745/45eac033-bb29-4ad7-9ed3-156e3d674304)
+![image](https://github.com/pwnedbyisa/writeups/assets/138353745/5a708717-9ed0-4e3d-8b11-425438232eed)
+
+
