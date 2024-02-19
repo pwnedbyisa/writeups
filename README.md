@@ -51,7 +51,8 @@ ___
 ___
 ### TryHackMe
 [Wonderland](/thm/wonderland.md)   -
-[Return of the Yeti](/thm/returnoftheyeti.md)   
+[Return of the Yeti](/thm/returnoftheyeti.md)   -
+[Through the Looking Glass](/thm/throughthelookingglass.md)
 ___
 ### Bandit - OverTheWire
 [lvl0](/bandit/lvl0.md)   -
