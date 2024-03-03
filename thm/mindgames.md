@@ -1,6 +1,6 @@
 > No hints. Hack it. Don't give up if you get stuck, enumerate harder
 ___
-- running an initial nmap ```nmap -sV IP -v``` scan I foud ports `90` and `22` open 
+- running an initial nmap ```nmap -sV IP -v``` scan I foud ports `80` and `22` open 
 - navigating to the webpage, there were a couple of code snippets to run, the and the coding language was brainfuck
 - decoding the brainfuck code samples, I found they were written in python (ex// print('Hello, World')
 - I used this python code for a reverse shell:
