@@ -30,4 +30,5 @@ flounder-pc-memdump.elf  imageinfo.txt  Resume.eml
 6. Last I checked the gigantic elf file with `readelf -a`
 7. The first part of the scan looked normal, but the description data at the end for `VBCPU` was unusual and contained a ton of zeroes
 8. `radare2` also didn't work, because I couldn't seek any adresses (it always went back to `[0x00000000]>`)
-9. 
+9. Since profiles are given, I assumed those have to be used with the executable in some way
+10. I decided to go with the tool `volatility`
