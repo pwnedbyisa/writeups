@@ -54,7 +54,8 @@ ___
 [Return of the Yeti](/thm/returnoftheyeti.md)   -
 [Through the Looking Glass](/thm/throughthelookingglass.md)    -
 [Mindgames](/thm/mindgames.md)    -
-[Anonymous Playground](/thm/anonymousplayground.md)
+[Anonymous Playground](/thm/anonymousplayground.md) -
+[GamingServer](thm/gamingserver.md)
 ___
 ### Bandit - OverTheWire
 [lvl0](/bandit/lvl0.md)   -
