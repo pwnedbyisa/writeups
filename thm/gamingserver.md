@@ -1,6 +1,6 @@
 > An Easy Boot2Root box for beginners
 #### User Flag
-1. Stared off with basic enumeration
+1. Started off with basic enumeration
 ```
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
