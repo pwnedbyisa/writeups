@@ -1,14 +1,14 @@
-flag 0
+#### flag 0
 - tbh I had no idea where to start, so I did my first checklist item for most web CTFs; add robots.txt to the end of the url to check for web crawlers (for reference, `.htaccess` is another good starting point (though a lot of the time access is forbidden)
 - the page showed `User-agent: *` and  `disallow /s3cr3t-ar3a`, along with the flag
 
-flag 1
+#### flag 1
 - my next step was to navigate to the forbidden filepath, which had a message saying the page was moved and peope who are allowed access know where to go
 - you know what that means... directory busting time! (spoiler alert this was a waste of 8 minutes)
 - unfortunately dirb turned up nothing so I decided to dig a bit more on the webpage
 - I used inspect to dig through the HTML and quite easily found another flag in the `alertbox` id
 
-flag 4
+#### flag 4
 - in the same alertbox that contained flag 1, there was a `next-page` attribute that pointed to the filepath `/apps-home`
 - this page contains a few differen buttons, including one for a secure login portal
 - clicking on the secure login page created a popup that prompted you to start a challege to access the secret area
@@ -34,7 +34,7 @@ ffuf -u https://hackyholidays.h1ctf.com/secure-login -X POST -t 50 -fr "Invalid 
 `fcrackzip -u -D -p wordlists/passwords.txt my_secure_files_not_for_you.zip`
 - the password was 'hahahaha'
 
-flag 2
+#### flag 2
 - ik these are out of order, but secure login looked most interesting anyways
 - next I went to people rater, which was a page with a list of names as buttons and the option to load more
 - clicking on a name pushed an alert to your screen with some random negative adjective, but no changes to the url were made
@@ -47,10 +47,10 @@ flag 2
 `https://66eb8eed35791300628d3d4f7b00bccf.ctf.hacker101.com/people-rater/entry/?id=eyJpZCI6MX0K`
 - success! (the id belonged to the grinch, of course)
 
-flag 3
+#### flag 3
 - I was 100% stuck with this one so I decided to look up a writeup for it (spoiler alert they started talking about APIs, I got scared, we'll come back to it maybe)
 
-flag 5
+#### flag 5
 - navigating to the diary button, the first thing I notcied was the url path `/my-diary/?template=entries.html`
 - trying to go the the `/my-diary` path just redirects you to the template path
 - next I just tried vieweing the `/my-diary/entries.html` filepath itself, which worked
@@ -94,7 +94,7 @@ if( isset($_GET["template"])  ){
 - replace the filepath - `/my-diary/?template=secretadsecretaadmin.phpdmin.phpmin.php`
 - success! (you also get a pending entry about how the grinch is gonna DdoS santa's workshop)
 
-flag 6
+#### flag 6
 - the next challenge is the grinch's hate mail campaign
 - I navigated to the only avaiable campaign name (called Guess What)
 - the hate mail grabs a couple templates and the name of the recipient, and you can view the result with the preview button
@@ -107,7 +107,7 @@ flag 6
 - I modified the hidden preiview data block to include the admin only template (adding the template value normally threw a JSON formatting error, so I replaced the name value with the template)
 - got the super secret admin header + the flag
 
-flag 7
+#### flag 7
 - next we tackle the forum
 - the first thing I noticed was that some posts are hidden unless you are an admin
 - vewing regular posts, there is an index in the url, but trying to view /0, /3, /4, /1/0, /1/2, etc didn't work
@@ -139,12 +139,12 @@ self::$read = new DbConnect( false, '', '','' );
 - the password ended up being `BahHumbug`
 - logging in to the regular portal, there ended up being a new section of posts called 'Secret Plans', which contained a post with the flag
 
-flag 8
+#### flag 8
 - quiz time! I entered grinch as my name, left the default answers and submitted
 - at the end of the quiz, I got a message saying there was one other player with the same name, which means the quiz stores player names, which means theres a database, which FINALLY means SQLi
 - fun fact idk enough about SQL to exfiltrate w this one... so we'll come back later
 
-flag 9
+#### flag 9
 - I was so traumatized by all the login portals atp that I just decided to inspect the source code and page elments first
 - the top of the webpage source code had this message `<!-- See README.md for assistance -->` so I navigated to the `/README.md` filepath, which downloaded the file
 ```
@@ -201,6 +201,6 @@ if( !isset($page) ) die("You cannot access this page directly"); ?>
 - I used E notation to fit the 3 character requirement (ex// 2e3 is 2 * 10^3), changed the form with inspect, and made my lastname all Y's
 - success!
 
-flag 10 + 11
+#### flag 10 + 11
 - wip
 - these both take place on the `/r3c0n_server_4fdk59/`
