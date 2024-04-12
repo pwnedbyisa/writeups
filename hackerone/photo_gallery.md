@@ -1,5 +1,5 @@
-WIP
-flag 0
+> WIP
+#### flag 0
 - the first thing that caugt my eye was the 'invisble' image at the bottom of the page. inspecting the source code, I found that all the images have an associated id
 - messing with the id value didn't do much, but I wanted to take a closer look at the queries
 - navigating to `/fetch?id=1` and 2 showed the binary content of the images, but `/fetch?id=3` threw a 500 internal server error
