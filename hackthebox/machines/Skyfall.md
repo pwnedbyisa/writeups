@@ -11,15 +11,19 @@ PORT   STATE SERVICE VERSION
 ```
 2. First I navigated to the webpage, which didn't have anything of interest in the source code, storage, links, etc.
 3. I did find it interesting that the website itself and `https://www.google.com` both showed up under hosts for cookie data (though neither had any cookies)
-4. Next I searched for directories
+4. Gave the IP a hostname to make the process easier
 ```
-└─$ gobuster dir -u http://10.10.11.254 -w /usr/share/dirb/wordlists/common.txt
+─$ sudo sh -c "echo '10.10.11.254 skyfall.htb' >> /etc/hosts"
 ```
-5. `/assets/` and `index.html` were the results. Both could be found in the source code of the site and assets threw a 403 forbidden error </3
-6. Next I looked for subdomains 
+5. Next I searched for directories
 ```
-└─$ gobuster vhost -u http://10.10.11.254 -w Subdomain.txt --append-domain
+└─$ gobuster dir -u http://skyfall.htb -w /usr/share/dirb/wordlists/common.txt
 ```
-7. But I only ended up with a ton of strange results (might be an issue on my part so I'll revisit) 
-8. Doing some outside research, I found that there is a RCE memory overwrite vulnerability on nginx 1.18.0 called `CVE-2021-23017`
-9. 
+6. `/assets/` and `index.html` were the results. Both could be found in the source code of the site and assets threw a 403 forbidden error </3
+7. Next I looked for subdomains 
+```
+└─$ gobuster dns -d skyfall.htb -w /usr/share/wordlists/Subdomain.txt 
+```
+8. 
+9. Doing some outside research, I found that there is a RCE memory overwrite vulnerability on nginx 1.18.0 called `CVE-2021-23017`
+10. 
