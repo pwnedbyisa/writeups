@@ -55,7 +55,8 @@ ___
 [Through the Looking Glass](/thm/throughthelookingglass.md)    -
 [Mindgames](/thm/mindgames.md)    -
 [Anonymous Playground](/thm/anonymousplayground.md) -
-[GamingServer](thm/gamingserver.md)
+[GamingServer](thm/gamingserver.md) -
+[Hijack](thm/hijack.md)
 ___
 ### Bandit - OverTheWire
 [lvl0](/bandit/lvl0.md)   -
