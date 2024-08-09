@@ -1,7 +1,7 @@
 ## writeups
 > Step by steps for some of the CTFs I've done <br>
 > I've only added a couple THM rooms that were pretty hard/ really interesting to me, but there are a ton more I can add if requested!
-
+- Also - Some of these were written a longggg time ago and I've learned a lot since then (aka the bandit, natas, and h1 writeups). Generally the harder CTFs have the best quality, but hopefully all of them are generally helpful!
 ___
 ### HackTheBox
 <details>
